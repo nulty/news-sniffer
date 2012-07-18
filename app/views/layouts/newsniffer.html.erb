@@ -1,51 +1,50 @@
 <!DOCTYPE html>
 <html>
-<head>
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-	<title><%= h(@title) + " - " if @title -%>News Sniffer</title>
-	<link href="/stylesheets/newsniffer.css" media="screen" rel="Stylesheet" type="text/css" />
-  <%= yield :head %>
-</head>
-<body>
-	<header>
-	<div id="header">
-		<img src="/stylesheets/layout/newsniffer-text.png" alt="News Sniffer" id="logo"/>
-		<nav>
-		<div id="nav">
-			<ul>
-				<li>
-				<%= link_to 'News Article Revisions', versions_url, 
-          :title => 'News article Revisions',
-            :class => controller.controller_name == "versions" ? "selected" : "" %>
-				</li>
-				<li><a href="/blog/">Blog</a></li>
-				<li>
-					<%= link_to 'About', '/blog/about'%>
-				</li>
-			</ul>
-		</div>
-		</nav>
-	</div>
-	</header>
-	<div id="crossbar"></div>
-	<div id="content">
-    <% if flash[:notice] %>
-			<div id="notice"><%= flash[:notice] %></div>
-    <% end -%>
-    <% if flash[:error] %>
-			<div id="error"><%= flash[:error] %></div>
-    <% end -%>
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title><%= h(@title) + " - " if @title -%>News Sniffer</title>
+    <link href="/stylesheets/newsniffer.css" media="screen" rel="Stylesheet" type="text/css" />
+    <%= yield :head %>
+  </head>
+  <body>
+    <header>
+      <div id="header">
+	<img src="/stylesheets/layout/newsniffer-text.png" alt="News Sniffer" id="logo"/>
+	<nav>
+	  <div id="nav">
+	    <ul>
+	      <li>
+		<%= link_to 'News Article Revisions', versions_url, 
+		    :title => 'News article Revisions',
+		:class => controller.controller_name == "versions" ? "selected" : "" %>
+	      </li>
+	      <li>
+		<%= link_to 'About', about_path %>
+	      </li>
+	    </ul>
+	  </div>
+	</nav>
+      </div>
+    </header>
+    <div id="crossbar"></div>
+    <div id="content">
+      <% if flash[:notice] %>
+      <div id="notice"><%= flash[:notice] %></div>
+      <% end -%>
+      <% if flash[:error] %>
+      <div id="error"><%= flash[:error] %></div>
+      <% end -%>
 
-    <%= yield %>
-  </div>
+      <%= yield %>
+    </div>
 
-	<footer>
-	<div id="footer">
-		<% cache(:footer_stats, :ttl => 2.hours) do %>
-			<p>Currently monitoring <%= number_with_delimiter(NewsArticle.count, :separator => ",") %> news articles 
-			with <%= number_with_delimiter(NewsArticleVersion.count, :separator => ",") %> different versions.</p>
-		<% end %>
-	</div>
-	</footer>
-</body>
+    <footer>
+      <div id="footer">
+	<% cache(:footer_stats, :ttl => 2.hours) do %>
+	<p>Currently monitoring <%= number_with_delimiter(NewsArticle.count, :separator => ",") %> news articles 
+	  with <%= number_with_delimiter(NewsArticleVersion.count, :separator => ",") %> different versions.</p>
+	<% end %>
+      </div>
+    </footer>
+  </body>
 </html>
