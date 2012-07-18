@@ -1,5 +1,6 @@
 NewsSniffer::Application.routes.draw do
-  match 'admin' => 'admin#login'
+
+  match 'about' => 'pages#about'
   match 'articles/:article_id/diff/:version_b/:version_a' => 'versions#diff', :as => :diff
   resources :versions do
     collection do
