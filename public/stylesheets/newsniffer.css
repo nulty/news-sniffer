@@ -1,6 +1,6 @@
 body {
 	color: #111;
-	font: 1em/1.4em "Trebuchet MS", Arial, sans-serif;
+	font: 1em/1.4em "Arial", Arial, sans-serif;
 	margin: 0;
 	padding: 0;
   background-color: #fff;
@@ -57,7 +57,7 @@ hr {
 	width: 910px;
 }
 #header {
-  background: #211 url(layout/top-bg.png);
+  background: #000000 url(layout/top-bg.png);
   height: 58px;
   margin: 0;
   text-align: left;
@@ -80,8 +80,8 @@ hr {
   margin: 0px 0px 0 0;
 }
 #crossbar {
-  background-color: #b4c6d9;
-  height: 5px;
+  background-color: #FF0000;
+  height: 3px;
   margin-bottom: 10px;
 }
 #nav {
@@ -105,13 +105,13 @@ hr {
 #nav a {
   float:left;
   display:block;
-  background: #997 url(layout/tabbg.png) repeat-x left top;
+  background: #E32424 url(layout/tabbg-new.png) repeat-x left top;
   padding: 9px 20px;
   text-decoration: none;
   border: none;
   font-weight: bold;
   color: #fff;
-  border-color: #b4c6d9;
+  border-color: #E32424;
   border-style: solid;
   border-width: 1px 1px 0 1px;
   outline: none;
@@ -119,9 +119,9 @@ hr {
 }
 
 #nav a.selected {
-  color: #4d6175;
-  border-color: #4d6175;
-  background: #d1dbe8 url(layout/tabbg-selected.png) repeat-x left top;
+  color: #FFFFFF;
+  border-color: #E32424;
+  background: #E32424 url(layout/tabbg-selectednew.png) repeat-x left top;
 }
 
 #nav a:hover {
