@@ -10,3 +10,4 @@ db/development_structure.sql
 xapian/
 *~
 vendor/bundler_gems/
+app/views/shared/
