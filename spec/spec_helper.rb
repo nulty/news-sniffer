@@ -60,5 +60,5 @@ def a_news_article_with_two_versions
 end
 
 def some_rss_feed_xml
-  @some_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/bbc_uk_politics.xml")
+  @some_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/irishtimes.xml")
 end

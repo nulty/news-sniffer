@@ -14,7 +14,10 @@
 #    You should have received a copy of the GNU Affero General Public License
 #    along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+require 'lib/feedsportal_converter.rb'
+
 class NewsArticleFeed < ActiveRecord::Base
+include FeedsPortalParser
   validates_presence_of :name, :url, :source
   validates_uniqueness_of :name, :url
   validates_numericality_of :check_period, :greater_than_or_equal_to => 300
@@ -45,7 +48,7 @@ class NewsArticleFeed < ActiveRecord::Base
     rss = get_rss_entries(rssdata)
     entries = NewsArticleFeedFilter.filter(rss.entries)
     articles = entries.collect do |e|
-      url = e[:link]
+      url = convert_feedsportal(e[:link])
       page = WebPageParser::ParserFactory.parser_for(:url => url, :page => nil)
       next nil if page.nil?
       guid = e.guid || e[:link]

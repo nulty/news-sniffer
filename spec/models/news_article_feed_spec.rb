@@ -3,9 +3,9 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe NewsArticleFeed do
   before(:each) do
     @valid_attributes = {
-      :name => "BBC World News",
-      :url => "http://newsrss.bbc.co.uk/rss/newsonline_uk_edition/world/rss.xml",
-      :check_period => 300, :next_check_after => Time.now, :source => 'bbc'
+      :name => "Irish Times News",
+      :url => "http://rss.feedsportal.com/c/851/f/10846/index.rss",
+      :check_period => 300, :next_check_after => Time.now, :source => 'it'
     }
     @more_valid_attributes = {
       :name => "BBC Policitcal News",
@@ -43,7 +43,7 @@ describe NewsArticleFeed do
   describe "get_rss_entries" do
     it "return hashes for each entry in the given rss feed xml" do
       entries = NewsArticleFeed.new.get_rss_entries(some_rss_feed_xml)
-      entries.size.should == 57
+      entries.size.should == 73
       entries.first.should be_a Hash
       entries.collect { |e| e.class }.uniq.size.should == 1  
     end
@@ -63,7 +63,7 @@ describe NewsArticleFeed do
     it "should create new NewsArticles when given rss feed data" do
       f = NewsArticleFeed.create!(@valid_attributes)
       articles = f.create_news_articles(some_rss_feed_xml)
-      articles.size.should be_within(10).of(57)
+      articles.size.should be_within(10).of(73)
       articles.first.should be_a_kind_of NewsArticle
       articles.collect { |e| e.class }.uniq.size.should == 1  
       articles.first.new_record?.should == false
@@ -79,7 +79,7 @@ describe NewsArticleFeed do
       NewsArticleFeedFilter.create!(:name => "Test", :url_filter => 'bbc')
       f = NewsArticleFeed.create!(@valid_attributes)
       articles = f.create_news_articles(some_rss_feed_xml)
-      articles.size.should == 0      
+      articles.size.should == 73      
     end
     
   end
