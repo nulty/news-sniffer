@@ -13,7 +13,7 @@ gem "curb", "0.8.0"
 #gem "web-page-parser", "0.25"
 
 #Using this until RTE is merged
-gem "web-page-parser", :git => "git://github.com/nulty/web-page-parser.git"
+gem "web-page-parser", :git => "git://github.com/nulty/web-page-parser.git", :ref => "7f96a6b"
 
 gem "diff-lcs", "1.1.3", :require => "diff/lcs"
 gem "xapian-ruby"
