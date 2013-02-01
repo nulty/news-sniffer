@@ -26,39 +26,46 @@ RSpec.configure do |config|
   config.use_transactional_fixtures = true
 end
 
-def a_news_article(options = { })
+def it_news_article(options = { })
   @guid_count = @guid_count.to_i + 1
-  NewsArticle.create! @valid_attributes.merge(:guid => @guid_count).merge(options)
+  NewsArticle.create! @it_valid_attributes.merge(:guid => @guid_count).merge(options)
 end
 
-def some_news_page_html
-  @a_news_page ||= File.read("spec/fixtures/web_pages/7984711-A.stm.html")
+def it_news_page_html
+  @it_news_page ||= File.read("spec/fixtures/web_pages/it_breaking2_A.html")
 end
 
-def some_news_page_html_with_a_change
-  @a_news_page_with_a_change ||= File.read("spec/fixtures/web_pages/7984711-B.stm.html")
+def it_news_page_html_with_a_change
+  @it_news_page_with_a_change ||= File.read("spec/fixtures/web_pages/it_breaking2_B.html")
 end
 
-def some_news_page_html_with_no_title
-  @some_news_page_html_with_no_title ||= File.read("spec/fixtures/web_pages/7984711-invalid.html")
+def it_news_page_html_with_no_title
+  @it_news_page_html_with_no_title ||= File.read("spec/fixtures/web_pages/it_invalid_breaking2.html")
 end
 
-def a_news_article_with_one_version
-  na = a_news_article
-  p = WebPageParser::BbcNewsPageParserV2.new(:page => some_news_page_html)
+def it_news_article_with_one_version
+  na = it_news_article
+  p = WebPageParser::IrishtimesPageParserV1.new(:page => it_news_page_html)
   na.update_from_page(p)
   na.reload
 end
 
-def a_news_article_with_two_versions
-  na = a_news_article
-  p1 = WebPageParser::BbcNewsPageParserV2.new(:page => some_news_page_html)
-  p2 = WebPageParser::BbcNewsPageParserV2.new(:page => some_news_page_html_with_a_change)
+def it_news_article_with_two_versions
+  na = it_news_article
+  p1 = WebPageParser::IrishtimesPageParserV1.new(:page => it_news_page_html)
+  p2 = WebPageParser::IrishtimesPageParserV1.new(:page => it_news_page_html_with_a_change)
   na.update_from_page(p1)
   na.update_from_page(p2)
   na.reload
 end
 
-def some_rss_feed_xml
-  @some_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/irishtimes.xml")
+def it_rss_feed_xml
+  @it_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/irishtimes.xml")
+end
+
+def indo_rss_feed_xml
+  @indo_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/indo.xml")
+end
+def rte_rss_feed_xml
+  @rte_rss_feed_xml ||= File.read("spec/fixtures/rss_feeds/indo.xml")
 end
