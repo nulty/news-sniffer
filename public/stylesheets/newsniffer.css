@@ -57,7 +57,7 @@ hr {
 	width: 910px;
 }
 #header {
-  background: #000000 url(layout/top-bg.png);
+  background-color: #000;
   height: 58px;
   margin: 0;
   text-align: left;
@@ -313,6 +313,7 @@ table.versions th.title {
 		text-align: left;
 }
 table.versions .created_at {
+    text-align: right;
 		width: 9em;
 }
 table.versions .source {

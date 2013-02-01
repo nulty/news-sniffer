@@ -1,5 +1,7 @@
-PATH
-  remote: ../web-page-parser
+GIT
+  remote: git://github.com/nulty/web-page-parser.git
+  revision: 5f80163e046ebe01bb2ceac869529369ab530973
+  ref: 5f80163
   specs:
     web-page-parser (0.25)
       htmlentities (>= 4.0.0)
